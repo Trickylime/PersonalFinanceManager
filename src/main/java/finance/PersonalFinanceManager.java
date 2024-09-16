@@ -11,7 +11,7 @@ public class PersonalFinanceManager {
 
         final Transaction transaction = Transaction.builder()
                 .amount(10)
-                .category("Internet")
+                .category("Wages")
                 .date(LocalDateTime.now())
                 .type("INCOME")
                 .build();
@@ -41,7 +41,13 @@ public class PersonalFinanceManager {
         transactionHistory.addTransaction(transaction3);
         transactionHistory.addTransaction(transaction4);
 
+        System.out.println("-".repeat(30));
         System.out.println(transactionHistory.findCategoryTransactions("Gym Membership"));
+        System.out.println("-".repeat(30));
         System.out.println(transactionHistory.findCategoryTransactions("phone"));
+        System.out.println("-".repeat(30));
+        System.out.println(transactionHistory.findTypeTransactions("income"));
+        System.out.println("-".repeat(30));
+        System.out.println(transactionHistory.findTypeTransactions("outgoing"));
     }
 }

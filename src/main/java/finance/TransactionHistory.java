@@ -33,6 +33,11 @@ public class TransactionHistory {
         return transactions.stream().filter(transaction -> transaction.getCategory().equalsIgnoreCase(category)).toList();
     }
 
+    public List<Transaction> findTypeTransactions(String type) {
+
+        return transactions.stream().filter(transaction -> transaction.getType().equalsIgnoreCase(type)).toList();
+    }
+
 
 
 
