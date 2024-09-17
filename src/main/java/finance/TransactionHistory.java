@@ -30,12 +30,23 @@ public class TransactionHistory {
 
     public List<Transaction> findCategoryTransactions(String category) {
 
-        return transactions.stream().filter(transaction -> transaction.getCategory().equalsIgnoreCase(category)).toList();
+        return transactions.stream()
+                .filter(transaction -> transaction.getCategory().equalsIgnoreCase(category))
+                .toList();
     }
 
     public List<Transaction> findTypeTransactions(String type) {
 
-        return transactions.stream().filter(transaction -> transaction.getType().equalsIgnoreCase(type)).toList();
+        return transactions.stream()
+                .filter(transaction -> transaction.getType().equalsIgnoreCase(type))
+                .toList();
+    }
+
+    public List<Transaction> findRecurringTransactions(boolean bool) {
+
+        return transactions.stream()
+                .filter(transaction -> transaction.isRecurring() == bool)
+                .toList();
     }
 
 

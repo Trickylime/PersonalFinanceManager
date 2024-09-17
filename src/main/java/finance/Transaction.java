@@ -15,6 +15,7 @@ public class Transaction {
     private final double amount;
     private final String category;
     private final String type;
+    private final boolean recurring;
 
     @Override
     public String toString() {
@@ -23,6 +24,7 @@ public class Transaction {
                 "  amount=" + amount + ",\n" +
                 "  category='" + category + "',\n" +
                 "  type='" + type + "',\n" +
+                "  recurring='" + recurring + "'\n" +
                 '}';
     }
 
