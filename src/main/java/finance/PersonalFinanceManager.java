@@ -57,5 +57,15 @@ public class PersonalFinanceManager {
         System.out.println(transactionHistory.getTransactions());
         System.out.println("-".repeat(30));
         System.out.println(transactionHistory.findRecurringTransactions(false));
+        System.out.println("-".repeat(30));
+        System.out.println(transactionHistory.findRecurringTransactions(true));
+
+        transactionHistory.deleteTransaction(transaction);
+        transactionHistory.deleteTransaction(transaction2);
+        transactionHistory.deleteTransaction(transaction3);
+
+        System.out.println("-".repeat(30));
+        System.out.println(transactionHistory.getTransactions());
+
     }
 }
