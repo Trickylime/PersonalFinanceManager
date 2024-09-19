@@ -49,6 +49,24 @@ public class TransactionHistory {
                 .toList();
     }
 
+    public double incomeTotal() {
+
+        List<Transaction> incomeTransactions = findTypeTransactions("income");
+
+        return incomeTransactions.stream()
+                .mapToDouble(Transaction::getAmount)
+                .sum();
+    }
+
+    public double outgoingTotal() {
+
+        List<Transaction> incomeTransactions = findTypeTransactions("outgoing");
+
+        return incomeTransactions.stream()
+                .mapToDouble(Transaction::getAmount)
+                .sum();
+    }
+
 
 
 

@@ -10,7 +10,7 @@ public class PersonalFinanceManager {
         TransactionHistory transactionHistory = new TransactionHistory();
 
         final Transaction transaction = Transaction.builder()
-                .amount(10)
+                .amount(1000)
                 .category("Wages")
                 .date(LocalDateTime.now())
                 .type("INCOME")
@@ -66,6 +66,14 @@ public class PersonalFinanceManager {
 
         System.out.println("-".repeat(30));
         System.out.println(transactionHistory.getTransactions());
+
+        transactionHistory.addTransaction(transaction);
+        transactionHistory.addTransaction(transaction2);
+        transactionHistory.addTransaction(transaction3);
+
+        System.out.println("-".repeat(30));
+        System.out.println("Income total = " + transactionHistory.incomeTotal());
+        System.out.println("Outgoing total = " + transactionHistory.outgoingTotal());
 
     }
 }
