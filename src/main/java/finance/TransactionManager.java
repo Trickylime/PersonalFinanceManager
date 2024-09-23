@@ -7,18 +7,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 @NoArgsConstructor
-public class TransactionHistory {
+public class TransactionManager {
 
     @Getter
     private List<Transaction> transactions = new LinkedList<>();
 
     /*
         TODO:
-         Add transactions
-         return a list of transactions
-         Search for specific transactions
          Return sorted list of transactions (highest to lowest, by category)
-         Calculate and Return OUTGOING and INCOME values
      */
 
     public void addTransaction(Transaction transaction) {

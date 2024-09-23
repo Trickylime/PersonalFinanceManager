@@ -7,7 +7,7 @@ public class PersonalFinanceManager {
 
     public static void main(String[] args) {
 
-        TransactionHistory transactionHistory = new TransactionHistory();
+        TransactionManager transactionManager = new TransactionManager();
 
         final Transaction transaction = Transaction.builder()
                 .amount(1000)
@@ -40,40 +40,40 @@ public class PersonalFinanceManager {
                 .build();
 
 
-        transactionHistory.addTransaction(transaction);
-        transactionHistory.addTransaction(transaction2);
-        transactionHistory.addTransaction(transaction3);
-        transactionHistory.addTransaction(transaction4);
+        transactionManager.addTransaction(transaction);
+        transactionManager.addTransaction(transaction2);
+        transactionManager.addTransaction(transaction3);
+        transactionManager.addTransaction(transaction4);
 
         System.out.println("-".repeat(30));
-        System.out.println(transactionHistory.findCategoryTransactions("Gym Membership"));
+        System.out.println(transactionManager.findCategoryTransactions("Gym Membership"));
         System.out.println("-".repeat(30));
-        System.out.println(transactionHistory.findCategoryTransactions("phone"));
+        System.out.println(transactionManager.findCategoryTransactions("phone"));
         System.out.println("-".repeat(30));
-        System.out.println(transactionHistory.findTypeTransactions("income"));
+        System.out.println(transactionManager.findTypeTransactions("income"));
         System.out.println("-".repeat(30));
-        System.out.println(transactionHistory.findTypeTransactions("outgoing"));
+        System.out.println(transactionManager.findTypeTransactions("outgoing"));
         System.out.println("-".repeat(30));
-        System.out.println(transactionHistory.getTransactions());
+        System.out.println(transactionManager.getTransactions());
         System.out.println("-".repeat(30));
-        System.out.println(transactionHistory.findRecurringTransactions(false));
+        System.out.println(transactionManager.findRecurringTransactions(false));
         System.out.println("-".repeat(30));
-        System.out.println(transactionHistory.findRecurringTransactions(true));
+        System.out.println(transactionManager.findRecurringTransactions(true));
 
-        transactionHistory.deleteTransaction(transaction);
-        transactionHistory.deleteTransaction(transaction2);
-        transactionHistory.deleteTransaction(transaction3);
-
-        System.out.println("-".repeat(30));
-        System.out.println(transactionHistory.getTransactions());
-
-        transactionHistory.addTransaction(transaction);
-        transactionHistory.addTransaction(transaction2);
-        transactionHistory.addTransaction(transaction3);
+        transactionManager.deleteTransaction(transaction);
+        transactionManager.deleteTransaction(transaction2);
+        transactionManager.deleteTransaction(transaction3);
 
         System.out.println("-".repeat(30));
-        System.out.println("Income total = " + transactionHistory.incomeTotal());
-        System.out.println("Outgoing total = " + transactionHistory.outgoingTotal());
+        System.out.println(transactionManager.getTransactions());
+
+        transactionManager.addTransaction(transaction);
+        transactionManager.addTransaction(transaction2);
+        transactionManager.addTransaction(transaction3);
+
+        System.out.println("-".repeat(30));
+        System.out.println("Income total = " + transactionManager.incomeTotal());
+        System.out.println("Outgoing total = " + transactionManager.outgoingTotal());
 
     }
 }
