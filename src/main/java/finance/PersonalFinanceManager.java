@@ -1,6 +1,6 @@
 package finance;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class PersonalFinanceManager {
 
@@ -12,7 +12,7 @@ public class PersonalFinanceManager {
         final Transaction transaction = Transaction.builder()
                 .amount(1000)
                 .category("Wages")
-                .date(LocalDateTime.now())
+                .date(LocalDate.now())
                 .type("INCOME")
                 .recurring(true)
                 .build();
@@ -20,21 +20,21 @@ public class PersonalFinanceManager {
         final Transaction transaction2 = Transaction.builder()
                 .amount(99.99)
                 .category("Gym Membership")
-                .date(LocalDateTime.now())
+                .date(LocalDate.now())
                 .type("OUTGOING")
                 .recurring(true)
                 .build();
         final Transaction transaction3 = Transaction.builder()
                 .amount(99.99)
                 .category("Phone")
-                .date(LocalDateTime.now())
+                .date(LocalDate.now())
                 .type("OUTGOING")
                 .recurring(true)
                 .build();
         final Transaction transaction4 = Transaction.builder()
                 .amount(99.99)
                 .category("Food Shopping")
-                .date(LocalDateTime.now())
+                .date(LocalDate.now())
                 .type("OUTGOING")
                 .recurring(false)
                 .build();

@@ -1,5 +1,8 @@
 package finance;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -37,16 +40,43 @@ public class ConsoleManager {
 
     private void addTransactionsMenu() {
 
-        String dateInput;
-        double amountInput;
-        String categoryInput;
-        String typeInput;
-        boolean recurringInput;
+        LocalDate date;
+        double amount;
+        String category;
+        String type;
+        boolean recurring;
 
         System.out.println("Add Transaction: ");
+
+        System.out.println("Please enter a date for your transaction ie: YYYY/MM/DD (leave blank for current date");
         while (true) {
-            System.out.println("Please enter a date for your transaction ie: ##/##/#### (leave blank for current date");
-            dateInput = scanner.nextLine();
+            String userDateInput = scanner.nextLine();
+
+            if (userDateInput.isEmpty()) {
+                date = LocalDate.now(); //Use current date if input is empty
+                break;
+            } else {
+                date = validateDateInput(userDateInput);
+                if (date != null) break; //Exit loop if date is valid
+            }
+        }
+
+        System.out.println("Please enter a category for your input");
+        while (true) {
+            String userCategoryInput = scanner.nextLine();
+            
+        }
+    }
+
+    private LocalDate validateDateInput(String userDateInput) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+
+        try {
+            return LocalDate.parse(userDateInput, formatter);
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date format! Please try again using the correct format YYYY/MM/DD");
+            return null;
         }
     }
 

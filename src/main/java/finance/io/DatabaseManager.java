@@ -9,7 +9,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class DatabaseManager {
         final Transaction transaction = Transaction.builder()
                 .amount(99.99)
                 .category("Food")
-                .date(LocalDateTime.now())
+                .date(LocalDate.now())
                 .type("OUTGOING")
                 .build();
 

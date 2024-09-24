@@ -2,7 +2,7 @@ package finance;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class Transaction {
 
-    private final LocalDateTime date;
+    private final LocalDate date;
     private final double amount;
     private final String category;
     private final String type;
