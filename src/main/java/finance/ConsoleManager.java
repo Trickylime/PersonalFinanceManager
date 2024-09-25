@@ -43,7 +43,7 @@ public class ConsoleManager {
         LocalDate date;
         double amount;
         String category;
-        String type;
+        String type = "";
         boolean recurring;
 
         System.out.println("Add Transaction: ");
@@ -61,11 +61,74 @@ public class ConsoleManager {
             }
         }
 
-        System.out.println("Please enter a category for your input");
+        System.out.println("Please enter a category for your transaction...");
+        category = scanner.nextLine().toUpperCase();
+
+        System.out.println("Please enter the transaction amount...");
         while (true) {
-            String userCategoryInput = scanner.nextLine();
-            
+            try {
+                amount = scanner.nextDouble();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid Input please input a numerical value ie: 10.99");
+                scanner.next();  // Clear the invalid input from the scanner
+            }
         }
+
+        System.out.print("Is this transaction... \n 1. Income \n 2. Expense");
+        while (true) {
+            try {
+                int userTypeInput = scanner.nextInt();
+                if (userTypeInput == 1) {
+                    type = "INCOME";
+                    break;
+                }
+                if (userTypeInput == 2) {
+                    type = "OUTGOING";
+                    break;
+                }
+                else System.out.println("Invalid Input please select 1 for Income or 2 for Expense");
+
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid Input please select 1 for Income or 2 for Expense");
+                scanner.next();  // Clear the invalid input from the scanner
+            }
+        }
+
+        System.out.println("Does this transaction happen every month? (Y / N)");
+        while (true) {
+            String recurringUserInput = scanner.nextLine().toUpperCase();
+            if (recurringUserInput.equals("Y") || recurringUserInput.equals("YES")) {
+                recurring = true;
+                break;
+            } else if (recurringUserInput.equals("N") || recurringUserInput.equals("NO")) {
+                recurring = false;
+                break;
+            } else System.out.println("Invalid Input please enter Yes or No");
+        }
+
+        Transaction transaction = Transaction.builder()
+                    .amount(amount)
+                    .category(category)
+                    .date(date)
+                    .type(type)
+                    .recurring(recurring)
+                    .build();
+        System.out.println(transaction);
+
+        System.out.println("Is this transaction correct? (Y/N");
+        while (true) {
+            String userInput = scanner.nextLine().toUpperCase();
+            if (userInput.equals("Y") || userInput.equals("YES")) {
+                transactionManager.addTransaction(transaction);
+                System.out.println("Transaction Added!");
+                break;
+            } else if (userInput.equals("N") || userInput.equals("NO")) break;
+            else System.out.println("Invalid Input please enter Yes or No");
+        }
+
+
+
     }
 
     private LocalDate validateDateInput(String userDateInput) {

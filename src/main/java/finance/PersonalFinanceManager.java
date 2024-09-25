@@ -75,5 +75,7 @@ public class PersonalFinanceManager {
         System.out.println("Income total = " + transactionManager.incomeTotal());
         System.out.println("Outgoing total = " + transactionManager.outgoingTotal());
 
+        System.out.println(transaction);
+
     }
 }
