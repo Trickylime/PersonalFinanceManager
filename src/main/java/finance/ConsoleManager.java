@@ -9,12 +9,16 @@ import java.util.Scanner;
 public class ConsoleManager {
 
     private final Scanner scanner = new Scanner(System.in);
-    private TransactionManager transactionManager;
+    private final TransactionManager transactionManager;
 
-    private void mainMenu() {
+    public ConsoleManager(TransactionManager transactionManager) {
+        this.transactionManager = transactionManager;
+    }
+
+    public void mainMenu() {
 
         while(true) {
-            System.out.println("""
+            System.out.print("""
                     Main Menu:
                     1. Add Transaction
                     2. Find Transaction(s)
@@ -38,7 +42,10 @@ public class ConsoleManager {
         }
     }
 
-    private void addTransactionsMenu() {
+    public void addTransactionsMenu() {
+
+        // Consume any leftover newline character
+        scanner.nextLine();
 
         LocalDate date;
         double amount;
@@ -48,7 +55,7 @@ public class ConsoleManager {
 
         System.out.println("Add Transaction: ");
 
-        System.out.println("Please enter a date for your transaction ie: YYYY/MM/DD (leave blank for current date");
+        System.out.println("Please enter a date for your transaction ie: YYYY/MM/DD (leave blank for current date)");
         while (true) {
             String userDateInput = scanner.nextLine();
 
@@ -75,7 +82,7 @@ public class ConsoleManager {
             }
         }
 
-        System.out.print("Is this transaction... \n 1. Income \n 2. Expense");
+        System.out.print("Is this transaction... \n 1. Income \n 2. Expense \n");
         while (true) {
             try {
                 int userTypeInput = scanner.nextInt();
@@ -116,7 +123,7 @@ public class ConsoleManager {
                     .build();
         System.out.println(transaction);
 
-        System.out.println("Is this transaction correct? (Y/N");
+        System.out.println("Is this transaction correct? (Y/N)");
         while (true) {
             String userInput = scanner.nextLine().toUpperCase();
             if (userInput.equals("Y") || userInput.equals("YES")) {
@@ -131,7 +138,7 @@ public class ConsoleManager {
 
     }
 
-    private LocalDate validateDateInput(String userDateInput) {
+    public LocalDate validateDateInput(String userDateInput) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 
@@ -143,11 +150,11 @@ public class ConsoleManager {
         }
     }
 
-    private void searchTransactionsMenu() {
+    public void searchTransactionsMenu() {
 
     }
 
-    private void showReportsMenu() {
+    public void showReportsMenu() {
 
     }
 }
