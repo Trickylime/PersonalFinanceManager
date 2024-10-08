@@ -37,8 +37,8 @@ public class ConsoleManager {
 
                 switch (input) {
                     case 1 -> transactionMenu.addTransactionsMenu();
-                    case 2 -> searchTransactionsMenu();
-                    case 3 -> showReportsMenu();
+                    case 2 -> searchMenu.searchTransactionsMenu();
+                    case 3 -> reportMenu.showReportsMenu();
                     case 4 -> saveAndQuit = true;
                     default -> System.out.println("Invalid Input please enter a number 1-4");
                 }
@@ -47,16 +47,5 @@ public class ConsoleManager {
                 scanner.next();  // Clear the invalid input from the scanner
             }
         }
-    }
-
-
-
-    public void searchTransactionsMenu() {
-
-
-    }
-
-    public void showReportsMenu() {
-
     }
 }

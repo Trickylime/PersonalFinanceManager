@@ -15,5 +15,7 @@ public class ReportMenuManager {
     }
 
     public void showReportsMenu() {
+        System.out.println("All Transactions");
+        System.out.println(transactionManager.getTransactions());
     }
 }

@@ -21,8 +21,7 @@ public class TransactionMenuManager {
 
     public void addTransactionsMenu() {
 
-        // Consume any leftover newline character
-        scanner.nextLine();
+        scanner.nextLine();  // Consume the newline
 
         System.out.println("--------------------Add Transaction--------------------");
 

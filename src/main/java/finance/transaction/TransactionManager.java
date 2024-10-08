@@ -3,6 +3,7 @@ package finance.transaction;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,6 +25,12 @@ public class TransactionManager {
         transactions.remove(transaction);
     }
 
+    public List<Transaction> findDateTransactions(LocalDate date) {
+
+        return transactions.stream()
+                .filter(transaction -> transaction.getDate().equals(date))
+                .toList();
+    }
     public List<Transaction> findCategoryTransactions(String category) {
 
         return transactions.stream()
