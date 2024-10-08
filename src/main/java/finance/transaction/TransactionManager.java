@@ -1,4 +1,4 @@
-package finance;
+package finance.transaction;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

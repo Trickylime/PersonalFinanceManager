@@ -1,5 +1,8 @@
 package finance;
 
+import finance.console.ConsoleManager;
+import finance.transaction.TransactionManager;
+
 public class PersonalFinanceManager {
 
 

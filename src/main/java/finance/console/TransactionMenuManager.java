@@ -1,4 +1,7 @@
-package finance;
+package finance.console;
+
+import finance.transaction.Transaction;
+import finance.transaction.TransactionManager;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -6,51 +9,20 @@ import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ConsoleManager {
+public class TransactionMenuManager {
 
-    private final Scanner scanner = new Scanner(System.in);
     private final TransactionManager transactionManager;
+    private final Scanner scanner;
 
-    public ConsoleManager(TransactionManager transactionManager) {
+    public TransactionMenuManager(TransactionManager transactionManager, Scanner scanner) {
         this.transactionManager = transactionManager;
-    }
-
-    public void mainMenu() {
-
-        boolean saveAndQuit = false;
-        while (!saveAndQuit) {
-            System.out.println("-".repeat(30));
-            System.out.print("""
-                    Main Menu:
-                    1. Add Transaction
-                    2. Find Transaction(s)
-                    3. View Reports
-                    4. Quit
-                    Please select what you would like to do:
-                    """);
-
-            try {
-                int input = scanner.nextInt();
-
-                switch (input) {
-                    case 1 -> addTransactionsMenu();
-                    case 2 -> searchTransactionsMenu();
-                    case 3 -> showReportsMenu();
-                    case 4 -> saveAndQuit = true;
-                    default -> System.out.println("Invalid Input please enter a number 1-3");
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a number 1-3");
-                scanner.next();  // Clear the invalid input from the scanner
-            }
-        }
+        this.scanner = scanner;
     }
 
     public void addTransactionsMenu() {
 
         // Consume any leftover newline character
         scanner.nextLine();
-
 
         System.out.println("--------------------Add Transaction--------------------");
 
@@ -78,7 +50,7 @@ public class ConsoleManager {
         }
     }
 
-    private LocalDate getDateInput() {
+    public LocalDate getDateInput() {
         LocalDate date;
         System.out.println("Please enter a date for your transaction ie: YYYY/MM/DD (leave blank for current date)");
         while (true) {
@@ -171,14 +143,5 @@ public class ConsoleManager {
                 System.out.println("Invalid Input please enter Yes or No");
             }
         }
-    }
-
-    public void searchTransactionsMenu() {
-
-
-    }
-
-    public void showReportsMenu() {
-
     }
 }
