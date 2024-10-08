@@ -52,6 +52,17 @@ public class TransactionManager {
                 .toList();
     }
 
+    public List<Transaction> findGreaterLessThanTransactions(double amount, boolean greater) {
+
+        return greater
+                ? transactions.stream()
+                .filter(transaction -> transaction.getAmount() >= amount)
+                .toList()
+                : transactions.stream()
+                        .filter(transaction -> transaction.getAmount() <= amount)
+                        .toList();
+    }
+
     public double incomeTotal() {
 
         List<Transaction> incomeTransactions = findTypeTransactions("income");

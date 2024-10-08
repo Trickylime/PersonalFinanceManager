@@ -75,7 +75,7 @@ public class TransactionMenuManager {
         }
     }
 
-    private double getAmountInput() {
+    public double getAmountInput() {
         double amount;
         System.out.println("Please enter the transaction amount...");
         while (true) {

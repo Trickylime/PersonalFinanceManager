@@ -26,7 +26,6 @@ public class SearchMenuManager {
 
         boolean searching = true;
         while (searching) {
-            scanner.nextLine();  // Consume the newline
 
             System.out.println("--------------------Search Transactions--------------------");
             System.out.print("""
@@ -42,6 +41,7 @@ public class SearchMenuManager {
 
             try {
                 int input = scanner.nextInt();
+                scanner.nextLine();  // Consume the newline
 
                 switch (input) {
                     case 1 -> searchByDate();
@@ -63,12 +63,11 @@ public class SearchMenuManager {
     private void searchByDate() {
 
         System.out.println("--------------------Search By Date--------------------");
-        scanner.nextLine();  // Consume the newline
 
         LocalDate date = transactionMenuManager.getDateInput();
         List<Transaction> transactionList = transactionManager.findDateTransactions(date);
 
-        if (!transactionManager.findDateTransactions(date).isEmpty()) {
+        if (!transactionList.isEmpty()) {
             System.out.println(transactionList);
         } else {
             System.out.println("No Transactions Found With That Date");
@@ -76,6 +75,21 @@ public class SearchMenuManager {
     }
 
     private void searchByAmount() {
+        System.out.println("--------------------Search By Greater Or Less Than Amount--------------------");
+
+        double amount = transactionMenuManager.getAmountInput();
+
+        System.out.println("Are you searching for amounts, greater(T) or less(F) than amount input");
+        boolean greater = scanner.nextBoolean();
+
+        List<Transaction> transactionList = transactionManager.findGreaterLessThanTransactions(amount, greater);
+
+        if (!transactionList.isEmpty()) {
+            System.out.println(transactionList);
+        } else {
+            String greaterOrLess = greater ? "Greater " : "Less ";
+            System.out.println("No Transactions Found " + greaterOrLess + "Than That Amount");
+        }
     }
 
     private void searchByCategory() {
