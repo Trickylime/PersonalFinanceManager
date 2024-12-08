@@ -3,33 +3,39 @@ package com.financemanager.personalfinancemanager.transaction;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.List;
 
 public class TransactionData {
 
     private static TransactionData instance = new TransactionData();
-    public List<Transaction> transactions = new LinkedList<>();
+    public ObservableList<TransactionItem> transactions = FXCollections.observableArrayList();
 
     public static TransactionData getInstance() {
         return instance;
     }
 
-    public void add(final Transaction transaction) throws IOException {
+    public void add(final TransactionItem transaction) {
         transactions.add(transaction);
-        save();
+    }
+
+    public ObservableList<TransactionItem> getTransactions() {
+        return transactions;
     }
 
     public void load() throws IOException {
         final FileReader reader = new FileReader(DATABASE_FILE);
         if(!reader.ready())
             return;
-        transactions = OBJECT_MAPPER.readValue(reader,  new TypeReference<List<Transaction>>(){});
+
+        var read = OBJECT_MAPPER.readValue(reader,  new TypeReference<List<TransactionItem>>(){});
+        transactions.addAll(read);
     }
 
     public void save() throws IOException {

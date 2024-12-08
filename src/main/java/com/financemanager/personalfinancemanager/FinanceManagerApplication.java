@@ -23,7 +23,7 @@ public class FinanceManagerApplication extends Application {
     }
 
     @Override
-    public void stop() throws Exception {
+    public void stop() {
         try {
             TransactionData.getInstance().save();
 
@@ -33,7 +33,7 @@ public class FinanceManagerApplication extends Application {
     }
 
     @Override
-    public void init() throws Exception {
+    public void init() {
         try {
             TransactionData.getInstance().load();
 

@@ -1,7 +1,7 @@
 package com.financemanager.personalfinancemanager.transaction;
 
 import java.time.LocalDate;
-public class Transaction {
+public class TransactionItem {
 
     private LocalDate date;
     private double amount;
@@ -9,10 +9,10 @@ public class Transaction {
     private String type;
     private boolean recurring;
 
-    public Transaction() {
+    public TransactionItem() {
     }
 
-    public Transaction(LocalDate date, double amount, String category, String type, boolean recurring) {
+    public TransactionItem(LocalDate date, double amount, String category, String type, boolean recurring) {
         this.date = date;
         this.amount = amount;
         this.category = category;
