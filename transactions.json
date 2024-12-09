@@ -4,10 +4,4 @@
   "category" : "Gym Membership",
   "type" : "EXPENSE",
   "recurring" : true
-}, {
-  "date" : [ 2024, 12, 8 ],
-  "amount" : 100.0,
-  "category" : "Gym Membership",
-  "type" : "EXPENSE",
-  "recurring" : true
 } ]
