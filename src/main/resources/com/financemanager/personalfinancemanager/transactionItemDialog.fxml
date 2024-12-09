@@ -1,0 +1,25 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<DialogPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.financemanager.personalfinancemanager.DialogController">
+
+    <headerText>
+        Contacts details:
+    </headerText>
+    <content>
+        <GridPane vgap="10" hgap="10">
+            <Label text="First Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Label fx:id="firstName" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Second Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label fx:id="lastName" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Phone Number:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <Label fx:id="phoneNumber" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Notes:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <Label fx:id="notes" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        </GridPane>
+    </content>
+
+</DialogPane>

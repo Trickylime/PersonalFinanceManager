@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -15,18 +16,30 @@ import java.util.List;
 public class TransactionData {
 
     private static TransactionData instance = new TransactionData();
-    public ObservableList<TransactionItem> transactions = FXCollections.observableArrayList();
+    private ObservableList<TransactionItem> transactions = FXCollections.observableArrayList();
+    private ObservableList<TransactionItem> incomeTransactions = FXCollections.observableArrayList();
+    private ObservableList<TransactionItem> expenseTransactions = FXCollections.observableArrayList();
 
     public static TransactionData getInstance() {
         return instance;
     }
 
-    public void add(final TransactionItem transaction) {
+    public void add(TransactionItem transaction) {
         transactions.add(transaction);
     }
 
-    public ObservableList<TransactionItem> getTransactions() {
-        return transactions;
+    public ObservableList<TransactionItem> getIncomeTransactions() {
+        incomeTransactions = new FilteredList<TransactionItem>(transactions, TransactionItem::getType);
+        return incomeTransactions;
+    }
+
+    public ObservableList<TransactionItem> getExpenseTransactions() {
+        expenseTransactions = new FilteredList<TransactionItem>(transactions, t -> !t.getType());
+        return expenseTransactions;
+    }
+
+    public void deleteTransaction(TransactionItem item) {
+        transactions.remove(item);
     }
 
     public void load() throws IOException {
@@ -41,8 +54,6 @@ public class TransactionData {
     public void save() throws IOException {
         final String transactionsToJson = OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(transactions);
 
-        System.out.println(transactionsToJson);
-
         final BufferedWriter writer = new BufferedWriter(new FileWriter(DATABASE_FILE));
         writer.write(transactionsToJson);
         writer.flush();
@@ -51,4 +62,5 @@ public class TransactionData {
 
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper().registerModule(new JavaTimeModule());
     private static final String DATABASE_FILE = "transactions.json";
+
 }

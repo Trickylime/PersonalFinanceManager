@@ -1,0 +1,25 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<DialogPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.financemanager.personalfinancemanager.DialogController">
+
+    <content>
+        <GridPane vgap="10" hgap="10">
+            <Label text="Income?" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <CheckBox fx:id="isIncome" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Date:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="datePicker" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Category:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="categoryField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Amount:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="amountField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <Label text="Monthly? :" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <CheckBox fx:id="recurringCheckBox" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+        </GridPane>
+    </content>
+
+</DialogPane>

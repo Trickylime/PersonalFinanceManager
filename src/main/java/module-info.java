@@ -7,6 +7,7 @@ module com.financemanager.personalfinancemanager2 {
 
 
     opens com.financemanager.personalfinancemanager.transaction to com.fasterxml.jackson.databind;
+    opens com.financemanager.personalfinancemanager to javafx.fxml;
     exports com.financemanager.personalfinancemanager;
     exports com.financemanager.personalfinancemanager.transaction;
 }

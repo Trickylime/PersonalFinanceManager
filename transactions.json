@@ -1,7 +1,55 @@
 [ {
-  "date" : [ 2024, 12, 8 ],
-  "amount" : 100.0,
-  "category" : "Gym Membership",
-  "type" : "EXPENSE",
+  "date" : [ 2024, 12, 9 ],
+  "amount" : 2000.0,
+  "category" : "Work",
+  "type" : true,
   "recurring" : true
+}, {
+  "date" : [ 2024, 12, 9 ],
+  "amount" : 10.99,
+  "category" : "Cinema",
+  "type" : false,
+  "recurring" : false
+}, {
+  "date" : [ 2024, 12, 9 ],
+  "amount" : 30.0,
+  "category" : "FB",
+  "type" : true,
+  "recurring" : false
+}, {
+  "date" : [ 2024, 12, 9 ],
+  "amount" : 1.0,
+  "category" : "test",
+  "type" : true,
+  "recurring" : false
+}, {
+  "date" : [ 2024, 12, 9 ],
+  "amount" : 2000.0,
+  "category" : "Work",
+  "type" : true,
+  "recurring" : false
+}, {
+  "date" : [ 2024, 12, 9 ],
+  "amount" : 100.0,
+  "category" : "test",
+  "type" : true,
+  "recurring" : false
+}, {
+  "date" : [ 2024, 12, 9 ],
+  "amount" : 200.0,
+  "category" : "test",
+  "type" : false,
+  "recurring" : false
+}, {
+  "date" : [ 2024, 12, 9 ],
+  "amount" : 123.0,
+  "category" : "okay",
+  "type" : true,
+  "recurring" : false
+}, {
+  "date" : [ 2024, 12, 9 ],
+  "amount" : 123.0,
+  "category" : "no",
+  "type" : false,
+  "recurring" : false
 } ]

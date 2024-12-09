@@ -6,13 +6,13 @@ public class TransactionItem {
     private LocalDate date;
     private double amount;
     private String category;
-    private String type;
+    private Boolean type;
     private boolean recurring;
 
     public TransactionItem() {
     }
 
-    public TransactionItem(LocalDate date, double amount, String category, String type, boolean recurring) {
+    public TransactionItem(LocalDate date, double amount, String category, Boolean type, boolean recurring) {
         this.date = date;
         this.amount = amount;
         this.category = category;
@@ -55,11 +55,11 @@ public class TransactionItem {
         this.category = category;
     }
 
-    public String getType() {
+    public Boolean getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Boolean type) {
         this.type = type;
     }
 

@@ -4,8 +4,26 @@
 <?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financemanager.personalfinancemanager.MainController">
-
+<BorderPane fx:id="mainBorderPane"
+            xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.financemanager.personalfinancemanager.MainController">
+    <top>
+        <HBox>
+            <MenuBar>
+                <Menu text="Income Transactions">
+                    <items>
+                        <MenuItem text="New Transaction.." onAction="#showNewIncomeItemDialog"/>
+                        <MenuItem text="View Transaction" onAction="#showIncomeItemDialog"/>
+                        <MenuItem text="Edit Transaction" onAction="#showEditIncomeItemDialog"/>
+                        <MenuItem text="Delete Transaction"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Exit" onAction="#handleExit"/>
+                    </items>
+                </Menu>
+            </MenuBar>
+        </HBox>
+    </top>
     <center>
         <HBox alignment="CENTER">
             <VBox alignment="CENTER">
