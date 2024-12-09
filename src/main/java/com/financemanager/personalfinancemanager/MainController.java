@@ -37,7 +37,7 @@ public class MainController {
     }
 
     @FXML
-    public void deleteItem(TransactionItem item) {
+    public void deleteItemDialog(TransactionItem item) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete Contact Item");
         alert.setHeaderText("Delete item: " + item.getCategory() + " - "
@@ -48,6 +48,17 @@ public class MainController {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             TransactionData.getInstance().deleteTransaction(item);
         }
+    }
+
+    @FXML
+    public void invalidInputDialog(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Invalid Input");
+        alert.setHeaderText("Missing or Invalid Fields");
+        alert.setContentText("Please ensure all fields are filled out correctly.");
+        alert.showAndWait();
+
+        event.consume();
     }
     @FXML
     public void itemDialog(String newEditView, TableView<TransactionItem> currentTable) {
@@ -80,12 +91,17 @@ public class MainController {
             case "NEW" -> {
                 dialog.setTitle("Add New Transaction");
                 dialog.setHeaderText("Enter your new transaction details:");
-                Optional<ButtonType> result = dialog.showAndWait();
 
+                dialog.getDialogPane().lookupButton(ButtonType.OK).addEventFilter(
+                        javafx.event.ActionEvent.ACTION, event -> {
+                            if (!dialogController.isFormValid()) invalidInputDialog(event);
+                        });
+
+                Optional<ButtonType> result = dialog.showAndWait();
                 if (result.isPresent() && result.get() == ButtonType.OK) {
                     TransactionItem newItem = dialogController.processNewItem();
-                    currentTable.refresh();
-                    currentTable.getSelectionModel().select(newItem);
+                    if (newItem.getType()) incomeTableView.getSelectionModel().select(newItem);
+                    else expenseTableView.getSelectionModel().select(newItem);
                 }
             }
             case "EDIT" -> {

@@ -26,21 +26,21 @@
     </top>
     <center>
         <HBox alignment="CENTER">
-            <VBox alignment="CENTER">
+            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                 <Label text="INCOME" />
-                <TableView fx:id="incomeTableView" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                <TableView fx:id="incomeTableView" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn prefWidth="200" text="Date">
+                        <TableColumn text="Date">
                             <cellValueFactory>
                                 <PropertyValueFactory property="date" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="200" text="Category">
+                        <TableColumn text="Category">
                             <cellValueFactory>
                                 <PropertyValueFactory property="category" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="200" text="Amount">
+                        <TableColumn text="Amount">
                             <cellValueFactory>
                                 <PropertyValueFactory property="amount" />
                             </cellValueFactory>
@@ -49,21 +49,21 @@
                 </TableView>
             </VBox>
 
-            <VBox alignment="CENTER">
+            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                 <Label text="EXPENSE" />
-                <TableView fx:id="expenseTableView" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                <TableView fx:id="expenseTableView" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn prefWidth="200" text="Date2">
+                        <TableColumn text="Date2">
                             <cellValueFactory>
                                 <PropertyValueFactory property="date" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="200" text="Category2">
+                        <TableColumn text="Category2">
                             <cellValueFactory>
                                 <PropertyValueFactory property="category" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="200" text="Amount2">
+                        <TableColumn text="Amount2">
                             <cellValueFactory>
                                 <PropertyValueFactory property="amount" />
                             </cellValueFactory>

@@ -44,20 +44,21 @@ public class DialogController {
         LocalDate date = datePicker.getValue();
         String category = categoryField.getText().trim();
 
-        // Get and validate the amount
         String amountText = amountField.getText().trim();
-        double amount = 0.0;
-        try {
-            amount = Double.parseDouble(amountText);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Invalid amount entered. Please enter a valid number.");
-        }
+        double amount = Double.parseDouble(amountText);
 
         boolean recurring = recurringCheckBox.isSelected();
 
         TransactionItem newItem = new TransactionItem(date, amount, category, type, recurring);
         TransactionData.getInstance().add(newItem);
         return newItem;
+    }
+
+    public boolean isFormValid() {
+        if (datePicker.getValue() == null) return false;
+        if (categoryField.getText().trim().isEmpty()) return false;
+        if (amountField.getText().trim().isEmpty()) return false;
+        return true;
     }
 
 //    public void viewItemDetails(ContactItem item) {
