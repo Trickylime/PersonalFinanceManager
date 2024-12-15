@@ -10,12 +10,19 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.TableView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.util.Optional;
 
 public class MainController {
+
+    private static final String DELETE_TRANSACTION_TITLE_TEXT = "Delete Transaction Item";
+    private static final String DELETE_CONFIRMATION_TEXT = "Are you sure? Press OK to confirm, or cancel";
+    private static final String DELETE_TRANSACTION_ITEM_TEXT = "Delete item: %s - %s - £%,.2f";
+
 
     @FXML
     public BorderPane mainBorderPane;
@@ -37,16 +44,27 @@ public class MainController {
     }
 
     @FXML
-    public void deleteItemDialog(TransactionItem item) {
+    public void deleteItem(TransactionItem item) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Delete Contact Item");
-        alert.setHeaderText("Delete item: " + item.getCategory() + " - "
-                + item.getType() + " - £" + item.getAmount() + "?");
-        alert.setContentText("Are you sure? Press OK to confirm, or cancel");
+        alert.setTitle(DELETE_TRANSACTION_TITLE_TEXT);
+        alert.setHeaderText(String.format(DELETE_TRANSACTION_ITEM_TEXT, item.getCategory(),
+                (item.getType() ? "INCOME" : "EXPENSE"), item.getAmount()));
+
+        alert.setContentText(DELETE_CONFIRMATION_TEXT);
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.isPresent() && result.get() == ButtonType.OK) {
             TransactionData.getInstance().deleteTransaction(item);
+        }
+    }
+
+    @FXML
+    public void handleDelKeyPressed(KeyEvent keyEvent, TableView<TransactionItem> currentTable) {
+        TransactionItem selectedItem = currentTable.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            if (keyEvent.getCode().equals(KeyCode.DELETE)) {
+                deleteItem(selectedItem);
+            }
         }
     }
 
@@ -112,7 +130,7 @@ public class MainController {
     }
 
     @FXML
-    public void handleExit(ActionEvent actionEvent) {
+    public void handleExit() {
         Platform.exit();
     }
 
@@ -126,5 +144,13 @@ public class MainController {
 
     public void showIncomeItemDialog() {
         itemDialog("VIEW", incomeTableView);
+    }
+
+    public void handleDelKeyPressedIncome(KeyEvent keyEvent) {
+        handleDelKeyPressed(keyEvent, incomeTableView);
+    }
+
+    public void handleDelKeyPressedExpense(KeyEvent keyEvent) {
+        handleDelKeyPressed(keyEvent, expenseTableView);
     }
 }

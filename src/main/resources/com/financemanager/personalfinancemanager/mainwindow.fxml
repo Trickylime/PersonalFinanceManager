@@ -28,7 +28,7 @@
         <HBox alignment="CENTER">
             <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                 <Label text="INCOME" />
-                <TableView fx:id="incomeTableView" VBox.vgrow="ALWAYS">
+                <TableView fx:id="incomeTableView" VBox.vgrow="ALWAYS" onKeyPressed="#handleDelKeyPressedIncome">
                     <columns>
                         <TableColumn text="Date">
                             <cellValueFactory>
@@ -51,7 +51,7 @@
 
             <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                 <Label text="EXPENSE" />
-                <TableView fx:id="expenseTableView" VBox.vgrow="ALWAYS">
+                <TableView fx:id="expenseTableView" VBox.vgrow="ALWAYS" onKeyPressed="#handleDelKeyPressedExpense">
                     <columns>
                         <TableColumn text="Date2">
                             <cellValueFactory>

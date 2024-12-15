@@ -43,12 +43,6 @@
 }, {
   "date" : [ 2024, 12, 9 ],
   "amount" : 123.0,
-  "category" : "okay",
-  "type" : true,
-  "recurring" : false
-}, {
-  "date" : [ 2024, 12, 9 ],
-  "amount" : 123.0,
   "category" : "no",
   "type" : false,
   "recurring" : false
@@ -60,20 +54,8 @@
   "recurring" : false
 }, {
   "date" : [ 2024, 12, 9 ],
-  "amount" : 12345.0,
-  "category" : "selectTest",
-  "type" : true,
-  "recurring" : false
-}, {
-  "date" : [ 2024, 12, 9 ],
   "amount" : 123456.0,
   "category" : "selectTest",
-  "type" : false,
-  "recurring" : false
-}, {
-  "date" : [ 2024, 12, 9 ],
-  "amount" : 1.0,
-  "category" : "wow",
   "type" : false,
   "recurring" : false
 } ]
