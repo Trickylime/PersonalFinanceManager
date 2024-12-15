@@ -23,7 +23,13 @@ public class MainController {
     private static final String DELETE_CONFIRMATION_TEXT = "Are you sure? Press OK to confirm, or cancel";
     private static final String DELETE_TRANSACTION_ITEM_TEXT = "Delete item: %s - %s - £%,.2f";
 
+    private static final String INVALID_INPUT_TITLE = "Invalid Input";
+    private static final String INVALID_INPUT_HEADER = "Missing or Invalid Fields";
+    private static final String INVALID_INPUT_CONTENT = "Please ensure all fields are filled out correctly.";
 
+    private static final String ADD_NEW_TRANSACTION_TITLE = "Add New Transaction";
+    private static final String ADD_NEW_TRANSACTION_HEADER = "Enter your new transaction details:";
+    
     @FXML
     public BorderPane mainBorderPane;
     @FXML
@@ -71,9 +77,9 @@ public class MainController {
     @FXML
     public void invalidInputDialog(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Invalid Input");
-        alert.setHeaderText("Missing or Invalid Fields");
-        alert.setContentText("Please ensure all fields are filled out correctly.");
+        alert.setTitle(INVALID_INPUT_TITLE);
+        alert.setHeaderText(INVALID_INPUT_HEADER);
+        alert.setContentText(INVALID_INPUT_CONTENT);
         alert.showAndWait();
 
         event.consume();
@@ -107,8 +113,8 @@ public class MainController {
 
         switch (newEditView) {
             case "NEW" -> {
-                dialog.setTitle("Add New Transaction");
-                dialog.setHeaderText("Enter your new transaction details:");
+                dialog.setTitle(ADD_NEW_TRANSACTION_TITLE);
+                dialog.setHeaderText(ADD_NEW_TRANSACTION_HEADER);
 
                 dialog.getDialogPane().lookupButton(ButtonType.OK).addEventFilter(
                         javafx.event.ActionEvent.ACTION, event -> {
