@@ -6,10 +6,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -29,7 +26,7 @@ public class MainController {
 
     private static final String ADD_NEW_TRANSACTION_TITLE = "Add New Transaction";
     private static final String ADD_NEW_TRANSACTION_HEADER = "Enter your new transaction details:";
-    
+
     @FXML
     public BorderPane mainBorderPane;
     @FXML
@@ -47,6 +44,26 @@ public class MainController {
 
         incomeTableView.getSelectionModel().selectFirst();
         expenseTableView.getSelectionModel().selectFirst();
+
+        handRightClickMenuItems();
+    }
+
+    public void handRightClickMenuItems() {
+        ContextMenu listContextMenu = new ContextMenu();
+
+        MenuItem editMenuItem = new MenuItem("Edit");
+        editMenuItem.setOnAction((ActionEvent event) -> {
+            showEditIncomeItemDialog();
+        });
+
+        MenuItem deleteMenuItem = new MenuItem("Delete");
+        deleteMenuItem.setOnAction((ActionEvent event) -> {
+            deleteItem(incomeTableView.getSelectionModel().getSelectedItem());
+        });
+
+        listContextMenu.getItems().addAll(editMenuItem, deleteMenuItem);
+        incomeTableView.setContextMenu(listContextMenu);
+        expenseTableView.setContextMenu(listContextMenu);
     }
 
     @FXML
