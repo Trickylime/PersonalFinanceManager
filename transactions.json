@@ -30,12 +30,6 @@
   "recurring" : false
 }, {
   "date" : [ 2024, 12, 9 ],
-  "amount" : 100.0,
-  "category" : "test",
-  "type" : true,
-  "recurring" : false
-}, {
-  "date" : [ 2024, 12, 9 ],
   "amount" : 200.0,
   "category" : "test",
   "type" : false,
@@ -50,12 +44,6 @@
   "date" : [ 2024, 12, 9 ],
   "amount" : 321.0,
   "category" : "test again",
-  "type" : false,
-  "recurring" : false
-}, {
-  "date" : [ 2024, 12, 9 ],
-  "amount" : 123456.0,
-  "category" : "selectTest",
   "type" : false,
   "recurring" : false
 } ]

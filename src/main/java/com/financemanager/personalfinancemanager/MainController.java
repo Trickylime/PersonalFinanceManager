@@ -53,12 +53,12 @@ public class MainController {
 
         MenuItem editMenuItem = new MenuItem("Edit");
         editMenuItem.setOnAction((ActionEvent event) -> {
-            showEditIncomeItemDialog();
+            showEditItemDialog();
         });
 
         MenuItem deleteMenuItem = new MenuItem("Delete");
         deleteMenuItem.setOnAction((ActionEvent event) -> {
-            deleteItem(incomeTableView.getSelectionModel().getSelectedItem());
+            deleteItem(getSelectedItem());
         });
 
         listContextMenu.getItems().addAll(editMenuItem, deleteMenuItem);
@@ -82,8 +82,8 @@ public class MainController {
     }
 
     @FXML
-    public void handleDelKeyPressed(KeyEvent keyEvent, TableView<TransactionItem> currentTable) {
-        TransactionItem selectedItem = currentTable.getSelectionModel().getSelectedItem();
+    public void handleDelKeyPressed(KeyEvent keyEvent) {
+        TransactionItem selectedItem = getSelectedItem();
         if (selectedItem != null) {
             if (keyEvent.getCode().equals(KeyCode.DELETE)) {
                 deleteItem(selectedItem);
@@ -102,7 +102,7 @@ public class MainController {
         event.consume();
     }
     @FXML
-    public void itemDialog(String newEditView, TableView<TransactionItem> currentTable) {
+    public void itemDialog(String newEditView, TransactionItem selectedItem) {
         newEditView = newEditView.toUpperCase();
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(mainBorderPane.getScene().getWindow());
@@ -126,7 +126,6 @@ public class MainController {
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
 
         DialogController dialogController = fxmlLoader.getController();
-        TransactionItem selectedItem = currentTable.getSelectionModel().getSelectedItem();
 
         switch (newEditView) {
             case "NEW" -> {
@@ -152,28 +151,29 @@ public class MainController {
         }
     }
 
+    public TransactionItem getSelectedItem() {
+        if (incomeTableView.isFocused()) {
+            return incomeTableView.getSelectionModel().getSelectedItem();
+        } else if (expenseTableView.isFocused()) {
+            return expenseTableView.getSelectionModel().getSelectedItem();
+        }
+        return null;
+    }
+
     @FXML
     public void handleExit() {
         Platform.exit();
     }
 
-    public void showNewIncomeItemDialog() {
-        itemDialog("NEW", incomeTableView);
+    public void showNewItemDialog() {
+        itemDialog("NEW", getSelectedItem());
     }
 
-    public void showEditIncomeItemDialog() {
-        itemDialog("EDIT", incomeTableView);
+    public void showEditItemDialog() {
+        itemDialog("EDIT", getSelectedItem());
     }
 
-    public void showIncomeItemDialog() {
-        itemDialog("VIEW", incomeTableView);
-    }
-
-    public void handleDelKeyPressedIncome(KeyEvent keyEvent) {
-        handleDelKeyPressed(keyEvent, incomeTableView);
-    }
-
-    public void handleDelKeyPressedExpense(KeyEvent keyEvent) {
-        handleDelKeyPressed(keyEvent, expenseTableView);
+    public void showItemDialog() {
+        itemDialog("VIEW", getSelectedItem());
     }
 }

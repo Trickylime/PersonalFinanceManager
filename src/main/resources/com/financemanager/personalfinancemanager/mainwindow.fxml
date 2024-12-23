@@ -13,9 +13,9 @@
             <MenuBar>
                 <Menu text="Income Transactions">
                     <items>
-                        <MenuItem text="New Transaction.." onAction="#showNewIncomeItemDialog"/>
-                        <MenuItem text="View Transaction" onAction="#showIncomeItemDialog"/>
-                        <MenuItem text="Edit Transaction" onAction="#showEditIncomeItemDialog"/>
+                        <MenuItem text="New Transaction.." onAction="#showNewItemDialog"/>
+                        <MenuItem text="View Transaction" onAction="#showItemDialog"/>
+                        <MenuItem text="Edit Transaction" onAction="#showEditItemDialog"/>
                         <MenuItem text="Delete Transaction"/>
                         <SeparatorMenuItem/>
                         <MenuItem text="Exit" onAction="#handleExit"/>
@@ -28,7 +28,7 @@
         <HBox alignment="CENTER">
             <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                 <Label text="INCOME" />
-                <TableView fx:id="incomeTableView" VBox.vgrow="ALWAYS" onKeyPressed="#handleDelKeyPressedIncome">
+                <TableView fx:id="incomeTableView" VBox.vgrow="ALWAYS" onKeyPressed="#handleDelKeyPressed">
                     <columns>
                         <TableColumn text="Date">
                             <cellValueFactory>
@@ -51,7 +51,7 @@
 
             <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                 <Label text="EXPENSE" />
-                <TableView fx:id="expenseTableView" VBox.vgrow="ALWAYS" onKeyPressed="#handleDelKeyPressedExpense">
+                <TableView fx:id="expenseTableView" VBox.vgrow="ALWAYS" onKeyPressed="#handleDelKeyPressed">
                     <columns>
                         <TableColumn text="Date2">
                             <cellValueFactory>
